@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="nebrog.dotabuff">
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:icon="@mipmap/tide_tide"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.DotaBuff">
+        <activity
+            android:name="search.Search_Activity"
+            android:exported="true"
+            android:label="Dota Data" />
+        <activity
+            android:name=".SortActivity"
+            android:exported="true"
+            android:label="Dota Data">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+</manifest>
