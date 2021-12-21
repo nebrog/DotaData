@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import nebrog.dotabuff.R;
@@ -40,17 +41,25 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
     @Override
     public void onBindViewHolder(@NonNull SearchViewHolder holder, int position) {
+
         SearchPOJO searchPOJO = search.get(position);
         Glide
                 .with(holder.avatar)
                 .load(searchPOJO.avatar)
                 .into(holder.avatar);
-        holder.idUsers.setText(searchPOJO.id.toString());
+        holder.idUsers.setText("ID " + searchPOJO.id.toString());
         holder.name.setText(searchPOJO.name);
-        holder.lastGame.setText(searchPOJO.lastMatch);
+        if(searchPOJO.lastMatch!=null){
+            holder.lastGame.setText(searchPOJO.lastMatch.toString());
+        }
+        else{
+            holder.lastGame.setText("Нет данных о последнем матче");
+        }
         Log.e("Pek", "6");
 
     }
+
+
 
     @Override
     public int getItemCount() {

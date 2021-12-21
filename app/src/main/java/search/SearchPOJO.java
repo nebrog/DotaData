@@ -1,6 +1,10 @@
 package search;
 
+import androidx.annotation.Nullable;
+
 import com.google.gson.annotations.SerializedName;
+
+import java.util.Date;
 
 public class SearchPOJO {
     @SerializedName("avatarfull")
@@ -10,7 +14,8 @@ public class SearchPOJO {
     @SerializedName("account_id")
     public Integer id;
     @SerializedName("last_match_time")
-    public String lastMatch;
+    @Nullable
+    public Date lastMatch;
     @Override
     public String toString(){
         return "SearchPOJO{" +
