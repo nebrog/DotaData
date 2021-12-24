@@ -8,10 +8,7 @@
         android:icon="@mipmap/tide_tide"
         android:supportsRtl="true"
         android:theme="@style/Theme.DotaBuff">
-        <activity
-            android:name="search.Search_Activity"
-            android:exported="true"
-            android:label="Dota Data" />
+        
         <activity
             android:name=".SortActivity"
             android:exported="true"

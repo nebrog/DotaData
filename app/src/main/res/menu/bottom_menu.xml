@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/allHeroes"
+        android:title="Герои DOTA 2"
+        android:icon="@drawable/ic_dota2svg"
+        />
+    <item
+        android:id="@+id/searchUsers"
+        android:icon="@drawable/ic_dota2svg"
+        android:title="Поиск игрока" />
+
+</menu>
