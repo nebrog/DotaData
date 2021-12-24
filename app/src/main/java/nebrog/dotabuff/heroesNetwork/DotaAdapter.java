@@ -1,4 +1,4 @@
-package nebrog.dotabuff.network;
+package nebrog.dotabuff.heroesNetwork;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +27,7 @@ public class DotaAdapter extends RecyclerView.Adapter<DotaAdapter.DotaViewHolder
     @Override
     public DotaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         System.out.println("KekPek onCreateViewHolder");
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_heroes, parent, false);
         DotaViewHolder pvh = new DotaViewHolder(v);
         return pvh;
     }

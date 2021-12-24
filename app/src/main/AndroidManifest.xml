@@ -10,7 +10,7 @@
         android:theme="@style/Theme.DotaBuff">
         
         <activity
-            android:name=".SortActivity"
+            android:name=".MainActivity"
             android:exported="true"
             android:label="Dota Data">
             <intent-filter>

@@ -1,6 +1,4 @@
-package nebrog.dotabuff.network;
-
-import androidx.annotation.NonNull;
+package nebrog.dotabuff.heroesNetwork;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -1,4 +1,4 @@
-package nebrog.dotabuff.network;
+package nebrog.dotabuff.heroesNetwork;
 
 import java.util.List;
 

@@ -1,32 +1,25 @@
-package Fragment;
+package fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
 import nebrog.dotabuff.R;
-import nebrog.dotabuff.network.DotaAdapter;
+import nebrog.dotabuff.heroesNetwork.DotaAdapter;
 
-import nebrog.dotabuff.R;
-import nebrog.dotabuff.SortActivity;
-import nebrog.dotabuff.network.DotaAPI;
-import nebrog.dotabuff.network.DotaAdapter;
-import nebrog.dotabuff.network.DotaHeroesPOJO;
+import nebrog.dotabuff.heroesNetwork.DotaAPI;
+import nebrog.dotabuff.heroesNetwork.DotaHeroesPOJO;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,9 +36,7 @@ public class FragmentAllHeroes extends Fragment implements View.OnClickListener 
     DotaAdapter da = new DotaAdapter();
 
     @Override
-    public void onClick(View v) {
-
-    }
+    public void onClick(View v) {    }
 
     @Nullable
     @Override
@@ -60,37 +51,6 @@ public class FragmentAllHeroes extends Fragment implements View.OnClickListener 
         return view;
     }
 
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.sort_activity);
-//        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-//        Button nextActivity = findViewById(R.id.searchUsers);
-//        View.OnClickListener listenerNext = new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(FragmentSort.this, Search_Activity.class);
-//                startActivity(intent);
-//            }
-//        };
-//        nextActivity.setOnClickListener(listenerNext);
-//        Button load = findViewById(R.id.button);
-//        View.OnClickListener listener = new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                loadData();
-//            }
-//        };
-//        load.setOnClickListener(listener);
-//        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-//        recyclerView.setLayoutManager(linearLayoutManager);
-//
-//        recyclerView.setAdapter(da);
-//
-//
-//
-//    }
 
     private void loadData() {
         Retrofit retrofit = new Retrofit.Builder()
