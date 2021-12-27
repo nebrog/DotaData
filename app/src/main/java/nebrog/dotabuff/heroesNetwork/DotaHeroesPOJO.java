@@ -16,6 +16,9 @@ public class DotaHeroesPOJO {
     @SerializedName("attack_type")
     public String attackType;
 
+    @SerializedName("img")
+    public String img;
+
     @Override
     public String toString() {
         return "DotaHeroesPOJO{" +
@@ -23,6 +26,7 @@ public class DotaHeroesPOJO {
                 ", name='" + name + '\'' +
                 ", primaryAttr='" + primaryAttr + '\'' +
                 ", attackType='" + attackType + '\'' +
+                ", img='" + img + '\'' +
                 '}';
     }
 }

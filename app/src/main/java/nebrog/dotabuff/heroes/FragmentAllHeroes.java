@@ -1,4 +1,4 @@
-package fragment;
+package nebrog.dotabuff.heroes;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -9,14 +9,13 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import java.util.List;
+import java.util.Map;
 
 import nebrog.dotabuff.R;
-import nebrog.dotabuff.heroesNetwork.DotaAdapter;
 
 import nebrog.dotabuff.heroesNetwork.DotaAPI;
 import nebrog.dotabuff.heroesNetwork.DotaHeroesPOJO;
@@ -44,8 +43,9 @@ public class FragmentAllHeroes extends Fragment implements View.OnClickListener 
         View view = inflater.inflate(R.layout.fragment_heroes,
                 container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
+        int numberOfColumns = 6;
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), numberOfColumns);
+        recyclerView.setLayoutManager(gridLayoutManager);
         loadData();
         recyclerView.setAdapter(da);
         return view;
@@ -59,17 +59,17 @@ public class FragmentAllHeroes extends Fragment implements View.OnClickListener 
                 .build();
 
         DotaAPI dotaAPI = retrofit.create(DotaAPI.class);
-        Call<List<DotaHeroesPOJO>> call = dotaAPI.loadHeroes();
+        Call<Map<Integer,DotaHeroesPOJO>> call = dotaAPI.loadHeroes("heroes");
 
         call.enqueue(new FragmentAllHeroes.HeroCallback());
     }
 
-    private class HeroCallback implements Callback<List<DotaHeroesPOJO>> {
+    private class HeroCallback implements Callback<Map<Integer,DotaHeroesPOJO>> {
         @Override
-        public void onResponse(Call<List<DotaHeroesPOJO>> call, Response<List<DotaHeroesPOJO>> response) {
+        public void onResponse(Call<Map<Integer,DotaHeroesPOJO>> call, Response<Map<Integer,DotaHeroesPOJO>> response) {
             if (response.isSuccessful()) {
-                List<DotaHeroesPOJO> heroes = response.body();
-                da.setHeroes(heroes);
+                Map<Integer,DotaHeroesPOJO> heroes = response.body();
+                da.setHeroes(heroes.values());
                 Log.e("KekPek", heroes.toString());
             } else {
                 Log.e("KekPek", response.errorBody().toString());
@@ -77,7 +77,7 @@ public class FragmentAllHeroes extends Fragment implements View.OnClickListener 
         }
 
         @Override
-        public void onFailure(Call<List<DotaHeroesPOJO>> call, Throwable t) {
+        public void onFailure(Call<Map<Integer,DotaHeroesPOJO>> call, Throwable t) {
             Log.e("KekPek", t.getMessage(), t);
         }
     }
