@@ -6,47 +6,46 @@
     app:cardCornerRadius="6dp"
     android:layout_margin="4dp"
     app:cardElevation="6dp"
-    app:cardBackgroundColor="@color/cardview_light_background">
+    app:cardBackgroundColor="@color/purple_200">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding = "16dp">
+        android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/avatar"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:id="@+id/attribute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
 
-
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/idHeroes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
+            app:layout_constraintBottom_toTopOf="@id/attribute"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/nameHeroes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/idUsers"
+            android:id="@+id/typeAttack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name"   />
-        <TextView
-            android:id="@+id/lastGame"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            app:layout_constraintTop_toBottomOf="@id/idUsers"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/avatar"
-            xmlns:tools="http://schemas.android.com/tools"
-            tools:text="ssssssssssssssssssssssssssssssssssssssssssssss"
+            app:layout_constraintTop_toBottomOf="@+id/nameHeroes"
+
             />
 
 

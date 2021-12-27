@@ -1,16 +1,16 @@
-package search;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+package fragment;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -23,25 +23,36 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import usersNetwork.SearchAPI;
+import usersNetwork.SearchAdapter;
+import usersNetwork.SearchPOJO;
 
-public class Search_Activity extends AppCompatActivity {
+public class FragmentUsers extends Fragment implements View.OnClickListener {
+    @Override
+    public void onClick(View v) {
+
+    }
+
     SearchAdapter searchAdapter = new SearchAdapter();
     EditText editText;
 
+    public FragmentUsers() {    }
+
+    public static FragmentUsers newInstance() {
+        return new FragmentUsers();
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
-        editText = findViewById(R.id.editText);
-        RecyclerView recyclerView = findViewById(R.id.recSearchView);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_users, container, false);
+        editText = view.findViewById(R.id.editText);
+        RecyclerView recyclerView = view.findViewById(R.id.recSearchView);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        Log.e("Pek", "1");
-
         recyclerView.setAdapter(searchAdapter);
-
-
-        Button search = findViewById(R.id.button);
+        Button search = view.findViewById(R.id.button);
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,10 +62,8 @@ public class Search_Activity extends AppCompatActivity {
             }
         };
         search.setOnClickListener(listener);
-        Log.e("Pek", "2");
-
+        return view;
     }
-
     private void loadData() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(BuildConfig.DEBUG ? HttpLoggingInterceptor.Level.BODY : HttpLoggingInterceptor.Level.NONE);
@@ -71,7 +80,7 @@ public class Search_Activity extends AppCompatActivity {
         SearchAPI searchAPI = retrofit.create(SearchAPI.class);
         Call<List<SearchPOJO>> call = searchAPI.searchUser(editText.getText().toString());
 
-        call.enqueue(new Search_Activity.SearchCallback());
+        call.enqueue(new FragmentUsers.SearchCallback());
         Log.e("Pek", "3");
 
     }
@@ -93,5 +102,5 @@ public class Search_Activity extends AppCompatActivity {
         public void onFailure(Call<List<SearchPOJO>> call, Throwable t) {
         }
     }
-}
 
+}

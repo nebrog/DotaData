@@ -1,62 +1,56 @@
-package nebrog.dotabuff;
+package fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import java.util.List;
 
-import nebrog.dotabuff.network.DotaAPI;
-import nebrog.dotabuff.network.DotaAdapter;
-import nebrog.dotabuff.network.DotaHeroesPOJO;
+import nebrog.dotabuff.R;
+import nebrog.dotabuff.heroesNetwork.DotaAdapter;
+
+import nebrog.dotabuff.heroesNetwork.DotaAPI;
+import nebrog.dotabuff.heroesNetwork.DotaHeroesPOJO;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import search.Search_Activity;
 
-public class SortActivity extends AppCompatActivity {
-
-
-
-    DotaAdapter da = new DotaAdapter();
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.sort_activity);
-        Button nextActivity = findViewById(R.id.searchUsers);
-        View.OnClickListener listenerNext = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SortActivity.this,Search_Activity.class);
-                startActivity(intent);
-            }
-        };
-        nextActivity.setOnClickListener(listenerNext);
-        Button load = findViewById(R.id.button);
-        View.OnClickListener listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadData();
-            }
-        };
-        load.setOnClickListener(listener);
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
-
-        recyclerView.setAdapter(da);
-
-
-
+public class FragmentAllHeroes extends Fragment implements View.OnClickListener {
+    public FragmentAllHeroes() {
     }
+
+    public static FragmentAllHeroes newInstance() {
+        return new FragmentAllHeroes();
+    }
+    DotaAdapter da = new DotaAdapter();
+
+    @Override
+    public void onClick(View v) {    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_heroes,
+                container, false);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        loadData();
+        recyclerView.setAdapter(da);
+        return view;
+    }
+
 
     private void loadData() {
         Retrofit retrofit = new Retrofit.Builder()
@@ -67,7 +61,7 @@ public class SortActivity extends AppCompatActivity {
         DotaAPI dotaAPI = retrofit.create(DotaAPI.class);
         Call<List<DotaHeroesPOJO>> call = dotaAPI.loadHeroes();
 
-        call.enqueue(new HeroCallback());
+        call.enqueue(new FragmentAllHeroes.HeroCallback());
     }
 
     private class HeroCallback implements Callback<List<DotaHeroesPOJO>> {
@@ -89,3 +83,5 @@ public class SortActivity extends AppCompatActivity {
     }
 
 }
+
+

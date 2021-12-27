@@ -1,4 +1,4 @@
-package search;
+package usersNetwork;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,8 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nebrog.dotabuff.R;
-import nebrog.dotabuff.network.DotaAdapter;
-import nebrog.dotabuff.network.DotaHeroesPOJO;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchViewHolder> {
     List<SearchPOJO> search = new ArrayList<>();
@@ -30,7 +28,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     @NonNull
     @Override
     public SearchViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.rec_search_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_users, parent, false);
         SearchViewHolder pvh = new SearchViewHolder(v);
         Log.e("Pek", "5");
 
@@ -40,17 +38,25 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
     @Override
     public void onBindViewHolder(@NonNull SearchViewHolder holder, int position) {
+
         SearchPOJO searchPOJO = search.get(position);
         Glide
                 .with(holder.avatar)
                 .load(searchPOJO.avatar)
                 .into(holder.avatar);
-        holder.idUsers.setText(searchPOJO.id.toString());
+        holder.idUsers.setText("ID " + searchPOJO.id.toString());
         holder.name.setText(searchPOJO.name);
-        holder.lastGame.setText(searchPOJO.lastMatch);
+        if(searchPOJO.lastMatch!=null){
+            holder.lastGame.setText(searchPOJO.lastMatch.toString());
+        }
+        else{
+            holder.lastGame.setText("Нет данных о последнем матче");
+        }
         Log.e("Pek", "6");
 
     }
+
+
 
     @Override
     public int getItemCount() {
