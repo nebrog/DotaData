@@ -1,25 +1,32 @@
 package nebrog.dotabuff.heroes;
 
-import android.view.View;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import nebrog.dotabuff.R;
+import nebrog.dotabuff.heroesNetwork.DotaHeroesPOJO;
 
 public class DotaViewHolder extends RecyclerView.ViewHolder {
-        ImageView img;
-        ImageView attribute;
-        TextView idHeroes;
-        TextView nameHeroes;
-        TextView typeAttack;
 
-        DotaViewHolder(View itemView) {
-            super(itemView);
-            img = itemView.findViewById(R.id.img);
+    private final ImageView img;
 
-        }
-
-
+    DotaViewHolder(ViewGroup parent) {
+        super(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_heroes, parent, false));
+        img = itemView.findViewById(R.id.img);
     }
+
+    public void setHero(DotaHeroesPOJO dotaHeroesPOJO) {
+
+        Glide
+                .with(this.img)
+                .load("https://api.opendota.com" + dotaHeroesPOJO.img)
+                .into(this.img);
+    }
+
+
+}
