@@ -7,6 +7,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 
 public class SearchPOJO {
+
     @SerializedName("avatarfull")
     public String avatar;
     @SerializedName("personaname")

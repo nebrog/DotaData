@@ -10,8 +10,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import fragment.FragmentAllHeroes;
 import fragment.FragmentUsers;
+import nebrog.dotabuff.heroes.FragmentAllHeroes;
 //import nebrog.dotabuff.network.DotaAPI;
 //import nebrog.dotabuff.network.DotaAdapter;
 //import nebrog.dotabuff.network.DotaHeroesPOJO;

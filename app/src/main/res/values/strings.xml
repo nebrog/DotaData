@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">DotaBuff</string>
     <string name="button">Button</string>
+    <string name="agi">Ловкость</string>
+    <string name="str">Сила</string>
+    <string name="intel">Интеллект</string>
+
 </resources>
