@@ -17,7 +17,7 @@ import nebrog.dotabuff.domain.models.DotaHero;
  */
 public class HeroDetailFragment extends Fragment {
 
-    private OpenDotaInteractor interactor; // TODO: инициализировать переменную
+    private final OpenDotaInteractor interactor = new OpenDotaInteractor();
 
     @Nullable
     @Override

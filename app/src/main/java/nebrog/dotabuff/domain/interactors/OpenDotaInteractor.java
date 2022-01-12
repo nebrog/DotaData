@@ -14,7 +14,7 @@ import retrofit2.Call;
  */
 public class OpenDotaInteractor {
 
-    private OpenDotaApi openDotaApi; // TODO: Положить в переменную
+    private final OpenDotaApi openDotaApi = OpenDotaApi.SINGLETON;
 
     public DotaHero getHero(final String heroId) {
         DotaHeroDto heroDto = openDotaApi.loadHero(heroId);
