@@ -1,16 +1,14 @@
-package nebrog.dotabuff.heroes;
+package nebrog.dotabuff.ui.heroes;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import nebrog.dotabuff.R;
-import nebrog.dotabuff.models.HeroAttr;
+import nebrog.dotabuff.domain.models.HeroAttr;
 
 class AttrViewHolder extends RecyclerView.ViewHolder {
 

@@ -1,4 +1,4 @@
-package nebrog.dotabuff.heroes;
+package nebrog.dotabuff.ui.heroes;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import nebrog.dotabuff.heroesNetwork.DotaHeroesPOJO;
-import nebrog.dotabuff.models.HeroAttr;
+import nebrog.dotabuff.data.models.DotaHeroesPOJO;
+import nebrog.dotabuff.domain.models.HeroAttr;
 
 public class DotaAdapter extends RecyclerView.Adapter<ViewHolder> {
 

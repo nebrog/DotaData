@@ -1,4 +1,4 @@
-package fragment;
+package nebrog.dotabuff.ui.search_players;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -16,16 +16,12 @@ import java.util.List;
 
 import nebrog.dotabuff.BuildConfig;
 import nebrog.dotabuff.R;
-import okhttp3.OkHttpClient;
+import nebrog.dotabuff.data.api.DotaAPI;
+import nebrog.dotabuff.data.models.SearchPOJO;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import usersNetwork.SearchAPI;
-import usersNetwork.SearchAdapter;
-import usersNetwork.SearchPOJO;
 
 public class FragmentUsers extends Fragment implements View.OnClickListener {
     @Override
@@ -33,10 +29,14 @@ public class FragmentUsers extends Fragment implements View.OnClickListener {
 
     }
 
+    private final DotaAPI dotaAPI = DotaAPI.SINGLETON;
+
+
     SearchAdapter searchAdapter = new SearchAdapter();
     EditText editText;
 
-    public FragmentUsers() {    }
+    public FragmentUsers() {
+    }
 
     public static FragmentUsers newInstance() {
         return new FragmentUsers();
@@ -57,8 +57,6 @@ public class FragmentUsers extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 loadData();
-
-
             }
         };
         search.setOnClickListener(listener);
@@ -68,17 +66,7 @@ public class FragmentUsers extends Fragment implements View.OnClickListener {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(BuildConfig.DEBUG ? HttpLoggingInterceptor.Level.BODY : HttpLoggingInterceptor.Level.NONE);
 
-        OkHttpClient client = new OkHttpClient.Builder()
-                .addInterceptor(interceptor)
-                .build();
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.opendota.com/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(client)
-                .build();
-
-        SearchAPI searchAPI = retrofit.create(SearchAPI.class);
-        Call<List<SearchPOJO>> call = searchAPI.searchUser(editText.getText().toString());
+        Call<List<SearchPOJO>> call = dotaAPI.searchUser(editText.getText().toString());
 
         call.enqueue(new FragmentUsers.SearchCallback());
         Log.e("Pek", "3");

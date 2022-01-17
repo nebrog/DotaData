@@ -1,4 +1,4 @@
-package usersNetwork;
+package nebrog.dotabuff.data.models;
 
 import androidx.annotation.Nullable;
 

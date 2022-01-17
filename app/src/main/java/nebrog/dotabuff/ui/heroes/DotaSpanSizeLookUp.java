@@ -1,10 +1,10 @@
-package nebrog.dotabuff.heroes;
+package nebrog.dotabuff.ui.heroes;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import java.util.Collection;
 
-import nebrog.dotabuff.heroesNetwork.DotaHeroesPOJO;
+import nebrog.dotabuff.data.models.DotaHeroesPOJO;
 
 public class DotaSpanSizeLookUp extends GridLayoutManager.SpanSizeLookup {
     private final Integer numberOfColumns;

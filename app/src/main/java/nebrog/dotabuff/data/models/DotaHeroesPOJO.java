@@ -1,4 +1,4 @@
-package nebrog.dotabuff.heroesNetwork;
+package nebrog.dotabuff.data.models;
 
 import com.google.gson.annotations.SerializedName;
 

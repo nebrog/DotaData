@@ -1,32 +1,33 @@
-package nebrog.dotabuff.heroes;
+package nebrog.dotabuff.ui.heroes;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Map;
 
 import nebrog.dotabuff.R;
-import nebrog.dotabuff.heroesNetwork.DotaAPI;
-import nebrog.dotabuff.heroesNetwork.DotaHeroesPOJO;
+import nebrog.dotabuff.data.api.DotaAPI;
+import nebrog.dotabuff.data.models.DotaHeroesPOJO;
+import nebrog.dotabuff.ui.special_hero.FragmentSpecialHero;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FragmentAllHeroes extends Fragment {
     public FragmentAllHeroes() {
     }
+
+    private final DotaAPI dotaAPI = DotaAPI.SINGLETON;
 
     public static FragmentAllHeroes newInstance() {
         return new FragmentAllHeroes();
@@ -37,8 +38,12 @@ public class FragmentAllHeroes extends Fragment {
     DotaAdapter.OnHeroClickListener onHeroClickListener = new DotaAdapter.OnHeroClickListener() {
         @Override
         public void onHeroListener(DotaHeroesPOJO hero) {
-            Toast.makeText(getContext(), "Был выбран герой " + hero.name,
-                    Toast.LENGTH_SHORT).show();
+            FragmentSpecialHero fragmentSpecialHero = FragmentSpecialHero.newInstance(hero.id);
+            FragmentManager fragmentManager = getParentFragmentManager();
+            fragmentManager
+                    .beginTransaction()
+                    .replace(R.id.fragment_view, fragmentSpecialHero)
+                    .commit();
         }
 
     };
@@ -50,11 +55,11 @@ public class FragmentAllHeroes extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_heroes,
-                container, false);
+        View view = inflater.inflate(R.layout.fragment_heroes, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), numberOfColumns);
         gridLayoutManager.setSpanSizeLookup(spanSizeLookup);
+
 
         recyclerView.setLayoutManager(gridLayoutManager);
         loadData();
@@ -64,12 +69,7 @@ public class FragmentAllHeroes extends Fragment {
 
 
     private void loadData() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.opendota.com/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
 
-        DotaAPI dotaAPI = retrofit.create(DotaAPI.class);
         Call<Map<Integer, DotaHeroesPOJO>> call = dotaAPI.loadHeroes("heroes");
 
         call.enqueue(new FragmentAllHeroes.HeroCallback());
