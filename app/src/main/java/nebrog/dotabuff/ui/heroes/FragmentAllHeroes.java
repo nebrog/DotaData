@@ -70,7 +70,7 @@ public class FragmentAllHeroes extends Fragment {
 
     private void loadData() {
 
-        Call<Map<Integer, DotaHeroesPOJO>> call = dotaAPI.loadHeroes("heroes");
+        Call<Map<Integer, DotaHeroesPOJO>> call = dotaAPI.loadHeroes();
 
         call.enqueue(new FragmentAllHeroes.HeroCallback());
     }

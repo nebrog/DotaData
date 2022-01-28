@@ -76,7 +76,8 @@ public class FragmentUsers extends Fragment implements View.OnClickListener {
     private class SearchCallback implements Callback<List<SearchPOJO>> {
         @Override
         public void onResponse(Call<List<SearchPOJO>> call, Response<List<SearchPOJO>> response) {
-            if (response.isSuccessful()) {
+            if (response
+                    .isSuccessful()) {
                 List<SearchPOJO> search = response.body();
                 searchAdapter.setSearches(search);
 //                Log.e("Pek",search);

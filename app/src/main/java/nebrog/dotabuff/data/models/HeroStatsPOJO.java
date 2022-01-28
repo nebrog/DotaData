@@ -18,7 +18,7 @@ public class HeroStatsPOJO {
     @SerializedName("icon")
     public String icon;
 
-    @SerializedName("turbo_win")
+    @SerializedName("turbo_wins")
     public Integer turboWin;
 
     @Override
@@ -29,7 +29,7 @@ public class HeroStatsPOJO {
                 ", primaryAttr='" + primaryAttr + '\'' +
                 ", attackType='" + attackType + '\'' +
                 ", icon='" + icon + '\'' +
-                ", turboWin=" + turboWin +
+                ", turboWins=" + turboWin +
                 '}';
     }
 }
