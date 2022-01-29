@@ -21,6 +21,9 @@ public class HeroStatsPOJO {
     @SerializedName("turbo_wins")
     public Integer turboWin;
 
+    @SerializedName("turbo_picks")
+    public Integer turboPicks;
+
     @Override
     public String toString() {
         return "HeroStatsPOJO{" +
@@ -29,7 +32,8 @@ public class HeroStatsPOJO {
                 ", primaryAttr='" + primaryAttr + '\'' +
                 ", attackType='" + attackType + '\'' +
                 ", icon='" + icon + '\'' +
-                ", turboWins=" + turboWin +
+                ", turboWin=" + turboWin +
+                ", turboPicks=" + turboPicks +
                 '}';
     }
 }

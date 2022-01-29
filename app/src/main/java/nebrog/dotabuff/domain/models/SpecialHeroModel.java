@@ -6,6 +6,7 @@ public class SpecialHeroModel {
 
    public final String heroName;
    public final Integer winTurbo;
+   public final Integer turboPicks;
    public final String iconHero;
    public final List<String> itemsStart;
    public final List<String> itemsEarly;
@@ -15,6 +16,7 @@ public class SpecialHeroModel {
    public SpecialHeroModel(
            String heroName,
            Integer winTurbo,
+           Integer turboPicks,
            String iconHero,
            List<String> itemsStart,
            List<String> itemsEarly,
@@ -23,6 +25,7 @@ public class SpecialHeroModel {
    ) {
       this.heroName = heroName;
       this.winTurbo = winTurbo;
+      this.turboPicks = turboPicks;
       this.iconHero = iconHero;
       this.itemsStart = itemsStart;
       this.itemsEarly = itemsEarly;

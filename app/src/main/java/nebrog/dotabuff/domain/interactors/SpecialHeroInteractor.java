@@ -41,6 +41,7 @@ public class SpecialHeroInteractor {
                     return new SpecialHeroModel(
                             hero.name,
                             hero.turboWin,
+                            hero.turboPicks,
                             "https://api.opendota.com" + hero.icon,
                             findStartItems,
                             findEarlyItems,
@@ -57,10 +58,17 @@ public class SpecialHeroInteractor {
         List<Map.Entry<String, Integer>> ihs = new ArrayList<>(itemsHeroStart);
         ihs.sort(new SortItems());
         List<String> list = new ArrayList<>();
-        for (int x = 0; x < 6; x++) {
-            String itemID = ihs.get(x).getKey();
-            list.add(itemID);
+        if (ihs.size() > 6) {
+            for (int x = 0; x < 6; x++) {
+                String itemID = ihs.get(x).getKey();
+                list.add(itemID);
+            }
+        } else {
+            for (int x = 0; x < ihs.size(); x++) {
+                list.add(ihs.get(x).getKey());
+            }
         }
+
         return list;
 
 

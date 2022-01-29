@@ -47,7 +47,7 @@ public class FragmentSpecialHero extends Fragment {
         GridLayout gridLayout = linearLayout.findViewById(R.id.allImg);
         TextView game = linearLayout.findViewById(R.id.typeGame);
         game.setText(gamePeriod);
-        for (int x = 0; x < 6; x++) {
+        for (int x = 0; x < items.size(); x++) {
             Glide
                     .with(gridLayout)
                     .load(items.get(x))
@@ -84,8 +84,12 @@ public class FragmentSpecialHero extends Fragment {
 
                     @Override
                     public void onSuccess(@NonNull SpecialHeroModel specialHeroModel) {
+                        int winTurbo = specialHeroModel.winTurbo;
+                        int pickTurbo = specialHeroModel.turboPicks;
+                        long winRate = Math.round(((double) winTurbo / (double) pickTurbo) * 100);
+
                         heroName.setText(specialHeroModel.heroName);
-                        turboWin.setText("Побед в турбо играх " + specialHeroModel.winTurbo);
+                        turboWin.setText("Процент побед в турбо играх " + winRate + " %");
                         Glide
                                 .with(iconHero.getContext())
                                 .load(specialHeroModel.iconHero)
