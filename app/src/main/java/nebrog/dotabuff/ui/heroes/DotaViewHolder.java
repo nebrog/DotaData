@@ -1,4 +1,4 @@
-package nebrog.dotabuff.heroes;
+package nebrog.dotabuff.ui.heroes;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import nebrog.dotabuff.R;
-import nebrog.dotabuff.heroesNetwork.DotaHeroesPOJO;
+import nebrog.dotabuff.data.models.DotaHeroesPOJO;
 
 public class DotaViewHolder extends RecyclerView.ViewHolder {
 

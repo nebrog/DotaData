@@ -1,4 +1,4 @@
-package usersNetwork;
+package nebrog.dotabuff.ui.search_players;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nebrog.dotabuff.R;
+import nebrog.dotabuff.data.models.SearchPOJO;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchViewHolder> {
     List<SearchPOJO> search = new ArrayList<>();

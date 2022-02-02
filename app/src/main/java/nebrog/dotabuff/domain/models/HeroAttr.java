@@ -1,4 +1,4 @@
-package nebrog.dotabuff.models;
+package nebrog.dotabuff.domain.models;
 
 import androidx.annotation.DrawableRes;
 

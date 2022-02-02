@@ -1,4 +1,4 @@
-package nebrog.dotabuff;
+package nebrog.dotabuff.ui;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -10,17 +10,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import fragment.FragmentUsers;
-import nebrog.dotabuff.heroes.FragmentAllHeroes;
-//import nebrog.dotabuff.network.DotaAPI;
-//import nebrog.dotabuff.network.DotaAdapter;
-//import nebrog.dotabuff.network.DotaHeroesPOJO;
-//import retrofit2.Call;
-//import retrofit2.Callback;
-//import retrofit2.Response;
-//import retrofit2.Retrofit;
-//import retrofit2.converter.gson.GsonConverterFactory;
-//import search.Search_Activity;
+import nebrog.dotabuff.R;
+import nebrog.dotabuff.ui.heroes.FragmentAllHeroes;
+import nebrog.dotabuff.ui.search_players.FragmentUsers;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView.OnItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnItemSelectedListener() {

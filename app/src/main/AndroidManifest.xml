@@ -10,7 +10,7 @@
         android:theme="@style/Theme.DotaBuff">
         
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true"
             android:label="Dota Data">
             <intent-filter>
